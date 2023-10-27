@@ -7,13 +7,6 @@ var time9but=$('#9');
 var presentHour =moment().hour();
 var timeBlock=$('.time.block');
 
-
-$(function () {
-console.log(time9+"vartim9");
-console.log(today);
-console.log(presentHour);
-
-
 function textEntry() {
   $('.saveBtn').on('click', function() {
     var key = $(this).parent().attr('id');
@@ -21,6 +14,23 @@ function textEntry() {
     localStorage.setItem(key, value);
   });
 }
+
+function getDataOnRefresh() {
+  $('.time-block').each(function() {
+    const key = $(this).attr('id');
+    const value = localStorage.getItem(key);
+    $(this).children('.description').val(value);
+  });
+}
+
+$(function () {
+//preventDefault();
+console.log(time9+"vartim9");
+console.log(today);
+console.log(presentHour);
+
+
+
 textEntry ();
 
 for(var i=9;i<18;i++){
@@ -37,4 +47,8 @@ for(var i=9;i<18;i++){
 }
  
   $('#currentDay').text(today.format('[Today is] dddd DD MMMM YYYY'));
+  
+  getDataOnRefresh();
+  
+
 });
