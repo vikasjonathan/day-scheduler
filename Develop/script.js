@@ -2,9 +2,30 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 var today=dayjs();
-$('#currentDay').text(today.format('[Today is] dddd DD MMMM YYYY'));
+var time9=$('#hour-9');
+var time9but=$('#9');
+var presentHour =moment().hour();
+var timeBlock=$('.time.block');
+
 
 $(function () {
+console.log(time9+"vartim9");
+console.log(today);
+console.log(presentHour);
+
+
+function textEntry() {
+  $('.saveBtn').on('click', function() {
+    const key = $(this).parent().attr('id');
+    const value = $(this).siblings('.description').val();
+    localStorage.setItem(key, value);
+  });
+}
+textEntry ();
+
+
+
+
 
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
@@ -24,4 +45,5 @@ $(function () {
   // attribute of each time-block be used to do this?
   //
   // TODO: Add code to display the current date in the header of the page.
+  $('#currentDay').text(today.format('[Today is] dddd DD MMMM YYYY'));
 });
