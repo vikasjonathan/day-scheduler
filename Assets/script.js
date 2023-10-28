@@ -23,6 +23,7 @@ function getDataOnRefresh() {
   });
 }
 
+
 $(function () {
 //preventDefault();
 console.log(time9+"vartim9");
@@ -32,7 +33,6 @@ console.log(presentHour);
 
 
 textEntry ();
-
 for(var i=9;i<18;i++){
   if(i==presentHour){
     $('#hour-'+i).addClass('present');
@@ -41,7 +41,7 @@ for(var i=9;i<18;i++){
   {
     $('#hour-'+i).addClass('past');
   }
-  else {
+  else if (i>presentHour) {
     $('#hour-'+i).addClass('future');
   }
 }
